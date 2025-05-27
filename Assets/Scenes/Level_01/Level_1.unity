@@ -9658,7 +9658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586aa76641c66634b81067f3cf223e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseMoveActive: 1
+  mouseMoveActive: 0
   agent: {fileID: 2023877678}
   groundLayer:
     serializedVersion: 2
@@ -9728,6 +9728,7 @@ MonoBehaviour:
   playerActionMapName: Player
   mousePositionActionName: MousePosition
   mouseInteractionActionName: MouseInteraction
+  moveActionName: Move
 --- !u!43 &2035208465
 Mesh:
   m_ObjectHideFlags: 0

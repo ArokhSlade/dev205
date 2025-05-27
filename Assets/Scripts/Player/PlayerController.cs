@@ -65,6 +65,13 @@ public class PlayerController : MonoBehaviour
 
     private void KeyboardMove()
     {
-        throw new NotImplementedException();
+        Vector2 movementVector = input.MoveInput;
+        Debug.LogError("MovementVector = " + movementVector);
+
+        Vector3 targetPosition = transform.position;
+        targetPosition.x += movementVector.x;
+        targetPosition.z += movementVector.y;
+        agent.destination = targetPosition;
+
     }
 }
