@@ -2,8 +2,12 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private bool mouseMoveActive;
+
     [SerializeField]
     NavMeshAgent agent;
 
@@ -12,9 +16,12 @@ public class PlayerController : MonoBehaviour
 
     private Camera cam;
 
+    private PlayerInput input;
+
     private void Awake()
     {
         cam = Camera.main;
+        input = GetComponent<PlayerInput>();
     }
     void Start()
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField, Header("Input Action Asset")]
@@ -26,6 +27,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
+
         InputActionMap inputActions = playerActionAsset.FindActionMap(playerActionMapName);
         mousePositionAction = inputActions.FindAction(mousePositionActionName);
         mouseInteractionAction = inputActions.FindAction(mouseInteractionActionName);
