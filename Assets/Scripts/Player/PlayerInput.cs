@@ -59,6 +59,12 @@ public class PlayerInput : MonoBehaviour
     {
         mousePositionAction.performed += MousePositionActionPerformed;
         moveAction.performed += MoveActionPerformed;
+        moveAction.canceled += MoveActionCanceled;
+    }
+
+    private void MoveActionCanceled(InputAction.CallbackContext context)
+    {
+        MoveInput = Vector2.zero;
     }
 
     private void MoveActionPerformed(InputAction.CallbackContext context)
