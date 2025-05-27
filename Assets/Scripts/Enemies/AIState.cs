@@ -1,7 +1,10 @@
-public enum AIState
+namespace DEV205.Enemy
 {
-    None,
-    Chasing,
-    Attacking,
-    Patrolling
+    public enum AIState
+    {
+        None = 0,
+        Chasing = 10,
+        Attacking = 20,
+        Patrolling = 30,
+    }
 }
