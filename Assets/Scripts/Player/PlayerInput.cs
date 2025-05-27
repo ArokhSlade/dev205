@@ -15,6 +15,15 @@ public class PlayerInput : MonoBehaviour
     private InputAction mousePositionAction;
     private InputAction mouseInteractionAction;
 
+    public Vector2 MousePosition { get; private set; }
+    public bool LeftMouseClicked
+    {
+        get
+        {
+            return mouseInteractionAction.WasPerformedThisFrame();
+        }
+    }
+
     private void Awake()
     {
         InputActionMap inputActions = playerActionAsset.FindActionMap(playerActionMapName);
@@ -44,11 +53,6 @@ public class PlayerInput : MonoBehaviour
 
     private void MousePositionActionPerformed(InputAction.CallbackContext context)
     {
-        context.ReadValue<Vector2>();
-    }
-
-    private void MousePositionActionPerformed()
-    {
-
+        MousePosition = context.ReadValue<Vector2>();
     }
 }
