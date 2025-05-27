@@ -12,11 +12,16 @@ public class PlayerInput : MonoBehaviour
     private string mousePositionActionName;
     [SerializeField]
     private string mouseInteractionActionName;
+    [SerializeField]
+    private string moveActionName;
 
     private InputAction mousePositionAction;
     private InputAction mouseInteractionAction;
+    private InputAction moveAction;
 
+    public Vector2 MoveInpit { get; private set; }
     public Vector2 MousePosition { get; private set; }
+
     public bool LeftMouseClicked
     {
         get
@@ -31,6 +36,7 @@ public class PlayerInput : MonoBehaviour
         InputActionMap inputActions = playerActionAsset.FindActionMap(playerActionMapName);
         mousePositionAction = inputActions.FindAction(mousePositionActionName);
         mouseInteractionAction = inputActions.FindAction(mouseInteractionActionName);
+        moveAction = inputActions.FindAction(moveActionName);
 
         RegisterActions();
     }
@@ -39,12 +45,14 @@ public class PlayerInput : MonoBehaviour
     {
         mousePositionAction.Enable();
         mouseInteractionAction.Enable();
+        moveAction.Enable();
     }
 
     private void OnDisable()
     {
         mousePositionAction.Disable();
         mouseInteractionAction.Disable();
+        moveAction.Disable();
     }
 
     private void RegisterActions()

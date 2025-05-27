@@ -108,6 +108,15 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""6ed1ac8b-5498-4ed0-814b-427ee342dd77"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,61 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
                     ""action"": ""MouseInteraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""717336c7-3a2a-4a81-8edb-540c7c5d21f4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b8e6a193-6090-4beb-ae21-c633e745c413"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""8fdb5dfa-86ee-445f-ad5a-b73cfe30494c"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""359e278d-87ea-466a-af2d-a53e380c7ed1"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""5cb9c77e-bdca-42fa-9f8d-2c2557e1450c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -142,6 +206,7 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_MouseInteraction = m_Player.FindAction("MouseInteraction", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
     }
 
     ~@PlayerInputActionMapping()
@@ -224,6 +289,7 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_MouseInteraction;
+    private readonly InputAction m_Player_Move;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -243,6 +309,10 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
         /// Provides access to the underlying input action "Player/MouseInteraction".
         /// </summary>
         public InputAction @MouseInteraction => m_Wrapper.m_Player_MouseInteraction;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Player_Move;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -275,6 +345,9 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
             @MouseInteraction.started += instance.OnMouseInteraction;
             @MouseInteraction.performed += instance.OnMouseInteraction;
             @MouseInteraction.canceled += instance.OnMouseInteraction;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
         }
 
         /// <summary>
@@ -292,6 +365,9 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
             @MouseInteraction.started -= instance.OnMouseInteraction;
             @MouseInteraction.performed -= instance.OnMouseInteraction;
             @MouseInteraction.canceled -= instance.OnMouseInteraction;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
         }
 
         /// <summary>
@@ -346,5 +422,12 @@ public partial class @PlayerInputActionMapping: IInputActionCollection2, IDispos
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMouseInteraction(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
     }
 }

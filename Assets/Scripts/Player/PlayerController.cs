@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -38,8 +39,6 @@ public class PlayerController : MonoBehaviour
         {
             KeyboardMove();
         }
-
-        
     }
 
     private void MouseMove()
@@ -49,11 +48,11 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0)) //LMB
+        if (input.LeftMouseClicked)
         {
             Debug.LogError("Clicked");
 
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(input.MousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100f, groundLayer))
@@ -66,6 +65,6 @@ public class PlayerController : MonoBehaviour
 
     private void KeyboardMove()
     {
-
+        throw new NotImplementedException();
     }
 }

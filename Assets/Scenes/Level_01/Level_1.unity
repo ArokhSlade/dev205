@@ -9724,10 +9724,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df77c66c11a7c9842a7ff8811c27ca46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerActionAsset: {fileID: 0}
-  playerActionMapName: 
-  mousePositionActionName: 
-  mouseInteractionActionName: 
+  playerActionAsset: {fileID: -944628639613478452, guid: bcc7921a682ae5b4595fe540cd43a943, type: 3}
+  playerActionMapName: Player
+  mousePositionActionName: MousePosition
+  mouseInteractionActionName: MouseInteraction
 --- !u!43 &2035208465
 Mesh:
   m_ObjectHideFlags: 0
