@@ -4,13 +4,13 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerAgent))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private bool mouseMoveActive;
-
-    [SerializeField]
-    NavMeshAgent agent;
+        
+    PlayerAgent agent;
 
     [SerializeField]
     private LayerMask groundLayer;
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         cam = Camera.main;
         input = GetComponent<PlayerInput>();
+        agent = GetComponent<PlayerAgent>();
     }
     void Start()
     {
@@ -57,8 +58,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100f, groundLayer))
             {
-                agent.destination = hit.point;
-                Debug.LogError("Hit on: " + hit.point);
+                agent.MoveToTarget(hit.point);
             }
         }
     }
@@ -66,12 +66,11 @@ public class PlayerController : MonoBehaviour
     private void KeyboardMove()
     {
         Vector2 movementVector = input.MoveInput;
-        Debug.LogError("MovementVector = " + movementVector);
 
         Vector3 targetPosition = transform.position;
         targetPosition.x += movementVector.x;
         targetPosition.z += movementVector.y;
-        agent.destination = targetPosition;
+        agent.MoveToTarget(targetPosition);
 
     }
 }
