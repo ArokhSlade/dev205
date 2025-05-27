@@ -30,6 +30,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (mouseMoveActive)
+        {
+            MouseMove();
+        }
+        else
+        {
+            KeyboardMove();
+        }
+
+        
+    }
+
+    private void MouseMove()
+    {
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
@@ -48,5 +62,10 @@ public class PlayerController : MonoBehaviour
                 Debug.LogError("Hit on: " + hit.point);
             }
         }
+    }
+
+    private void KeyboardMove()
+    {
+
     }
 }
