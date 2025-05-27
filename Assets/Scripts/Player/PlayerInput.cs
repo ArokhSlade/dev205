@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour
     private InputAction mouseInteractionAction;
     private InputAction moveAction;
 
-    public Vector2 MoveInpit { get; private set; }
+    public Vector2 MoveInput { get; private set; }
     public Vector2 MousePosition { get; private set; }
 
     public bool LeftMouseClicked
@@ -58,7 +58,12 @@ public class PlayerInput : MonoBehaviour
     private void RegisterActions()
     {
         mousePositionAction.performed += MousePositionActionPerformed;
-        //mouseInteractionAction
+        moveAction.performed += MoveActionPerformed;
+    }
+
+    private void MoveActionPerformed(InputAction.CallbackContext context)
+    {
+        MoveInput = context.ReadValue<Vector2>();
     }
 
     private void MousePositionActionPerformed(InputAction.CallbackContext context)
