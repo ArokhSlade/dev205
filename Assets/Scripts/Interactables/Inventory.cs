@@ -6,6 +6,7 @@ namespace DEV205.Interactables
 {
     public class Inventory
     {
+        public static Action<ResourceType, uint> ResourceChanged;
         private static Inventory instance;
         public static Inventory Instance
         {
@@ -45,6 +46,11 @@ namespace DEV205.Interactables
             else
             {
                 resources.Add(data.Type, data.Amount);
+            }
+
+            if (ResourceChanged != null)
+            {
+                ResourceChanged(data.Type, resources[data.Type]);
             }
         }
     }
