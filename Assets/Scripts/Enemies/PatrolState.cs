@@ -14,6 +14,7 @@ namespace DEV205.Enemy
         private bool moveForward;
         private float currentWaitingTime;
         private bool isPatrolling;
+        private bool isWaiting;
 
         protected override void Awake()
         {
@@ -40,7 +41,39 @@ namespace DEV205.Enemy
 
         public void UpdateState()
         {
-            
+            if (isPatrolling && agent.remainingDistance < 0.1f)
+            {
+                isPatrolling = false;
+
+                if (shouldWait)
+                {
+                    isWaiting = true;
+                    currentWaitingTime = 0;
+                }
+                else
+                {
+                    NextWaypoint();
+                    SetDestination();
+                }
+            }
+
+            if (isWaiting)
+            {
+                currentWaitingTime += Time.deltaTime;
+                if (currentWaitingTime >= maxWaitingTime)
+                {
+                    isWaiting = false;
+                    NextWaypoint();
+                    SetDestination();
+                }
+                animator.SetFloat("Speed", 0);
+            }
+            else
+            {
+                animator.SetFloat("Speed", 0.4f); 
+            }
+
+
         }
 
         private void NextWaypoint()
