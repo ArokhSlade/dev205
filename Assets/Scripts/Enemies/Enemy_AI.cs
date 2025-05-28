@@ -1,15 +1,49 @@
 using UnityEngine;
-
-public class Enemy1 : MonoBehaviour
+namespace DEV205.Enemy
 {
-    // Start is called once before  first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Enemy_AI : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private AIState initAIState;
 
-    void Update()
-    {
-        
+        private AIState currentAIState;
+
+        private IState currentState;
+
+        void Start()
+        {
+            currentAIState = initAIState;
+            EnterState();
+        }
+
+        void Update()
+        {
+            EvaluateState();
+            currentState.UpdateState();
+        }
+
+        private void EvaluateState()
+        {
+            // check if player is in range for chasing or not and switch state
+        }
+
+        private void EnterState()
+        {
+
+            switch (currentAIState)
+            {
+                case AIState.None:
+                    break;
+                case AIState.Chasing:
+                    break;
+                case AIState.Attacking:
+                    break;
+                case AIState.Patrolling:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
+
