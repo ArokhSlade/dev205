@@ -53,5 +53,14 @@ namespace DEV205.Interactables
                 ResourceChanged(data.Type, resources[data.Type]);
             }
         }
+
+        public uint GetResourceValue(ResourceType resourceType)
+        {
+            if (resources.ContainsKey(resourceType))
+            {
+                return resources[resourceType];
+            }
+            return 0;
+        }
     }
 }
