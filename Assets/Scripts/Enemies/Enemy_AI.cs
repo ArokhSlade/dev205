@@ -1,3 +1,4 @@
+using TreeEditor;
 using UnityEngine;
 namespace DEV205.Enemy
 {
@@ -5,6 +6,12 @@ namespace DEV205.Enemy
     {
         [SerializeField]
         private AIState initAIState;
+
+        [SerializeField]
+        private float chasingRadius;
+
+        [SerializeField]
+        private LayerMask playerLayer;
 
         private AIState currentAIState;
 
@@ -25,26 +32,34 @@ namespace DEV205.Enemy
         private void EvaluateState()
         {
             // check if player is in range for chasing or not and switch state
+            bool playerInChasingRange = Physics.CheckSphere(transform.position, chasingRadius, playerLayer);
+            Debug.Log("player in chasing range -> " + playerInChasingRange);
         }
 
         private void EnterState()
         {
-
             switch (currentAIState)
             {
                 case AIState.Chasing:
+                    currentState = GetComponent<ChaseState>();                    
                     break;
                 case AIState.Attacking:
                     break;
                 case AIState.Patrolling:
-                    currentState = GetComponent<PatrolState>();
-                    currentState.Enter();
+                    currentState = GetComponent<PatrolState>();                    
                     break;
                 case AIState.None:
                 default:
                     Debug.LogError($"Current AI State {currentAIState} not handled yet!");
                     break;
             }
+            currentState.Enter();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, chasingRadius);
         }
     }
 }

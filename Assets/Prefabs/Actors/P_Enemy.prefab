@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3555419482119799718}
   - component: {fileID: 5449962153743429883}
   - component: {fileID: 7160755809509820668}
-  - component: {fileID: 8602109945081010068}
+  - component: {fileID: 1272365810204446486}
+  - component: {fileID: 5270475525753931113}
   m_Layer: 0
   m_Name: P_Enemy
   m_TagString: Untagged
@@ -80,7 +81,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8602109945081010068
+--- !u!114 &1272365810204446486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,11 +90,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 8073703260755192095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d4192bcba320643aa4d02901c845a9, type: 3}
+  m_Script: {fileID: 11500000, guid: db1b6905bdefeef4cb8f1689bc3930b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  initAIState: 30
+  chasingRadius: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &5270475525753931113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073703260755192095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585c160bd1edfef46b126db429a50f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 7160755809509820668}
   animator: {fileID: 8646634454400712170}
+  speed: 1
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  shouldWait: 1
+  maxWaitingTime: 2
+  switchDirectionProbability: 0.5
 --- !u!1001 &2030046459843582728
 PrefabInstance:
   m_ObjectHideFlags: 0
