@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DEV205.Interactables
@@ -20,6 +21,8 @@ namespace DEV205.Interactables
 
         private bool isInitialized = false;
 
+        private Dictionary<ResourceType, uint> resources = new Dictionary<ResourceType, uint>();
+
         private Inventory() {}
 
         public void Initialize()
@@ -34,6 +37,15 @@ namespace DEV205.Interactables
         private void OnResourceCollected(ResourceData data)
         {
             Debug.Log($"Resource collected: {data.Type}");
+
+            if (resources.ContainsKey(data.Type))
+            {
+                resources[data.Type] += data.Amount;
+            }
+            else
+            {
+                resources.Add(data.Type, data.Amount);
+            }
         }
     }
 }
