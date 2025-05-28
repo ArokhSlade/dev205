@@ -33,7 +33,19 @@ namespace DEV205.Enemy
         {
             // check if player is in range for chasing or not and switch state
             bool playerInChasingRange = Physics.CheckSphere(transform.position, chasingRadius, playerLayer);
-            Debug.Log("player in chasing range -> " + playerInChasingRange);
+            bool isPatrolling = currentAIState == AIState.Patrolling;
+            bool isChasing = currentAIState == AIState.Chasing;
+
+            if (!isPatrolling && !playerInChasingRange)
+            {
+                currentAIState = AIState.Patrolling;
+                EnterState();
+            }
+            else if (!isChasing && playerInChasingRange)
+            {
+                currentAIState = AIState.Chasing;
+                EnterState();
+            }
         }
 
         private void EnterState()

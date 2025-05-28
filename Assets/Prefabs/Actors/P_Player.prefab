@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7381167273084976441}
   - component: {fileID: 4761086052535469106}
   - component: {fileID: 3715304893557135902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

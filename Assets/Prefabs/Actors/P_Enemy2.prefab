@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 8893567126147062044}
   - component: {fileID: 7812225605944034791}
   - component: {fileID: 6107701606859723926}
-  - component: {fileID: 7379291464439651626}
+  - component: {fileID: 7345984404297939261}
+  - component: {fileID: 3200576221688827284}
+  - component: {fileID: 3907590927592976341}
   m_Layer: 0
   m_Name: P_Enemy2
   m_TagString: Untagged
@@ -80,7 +82,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7379291464439651626
+--- !u!114 &7345984404297939261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,11 +91,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 6511013200597626090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d4192bcba320643aa4d02901c845a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ecf43e76e92eb8459f9f18cabd20e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  agent: {fileID: 6107701606859723926}
   animator: {fileID: 2421370525261224780}
+  speed: 4
+--- !u!114 &3200576221688827284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511013200597626090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585c160bd1edfef46b126db429a50f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 6107701606859723926}
+  animator: {fileID: 2421370525261224780}
+  speed: 2
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  shouldWait: 1
+  maxWaitingTime: 0.5
+  switchDirectionProbability: 0.5
+--- !u!114 &3907590927592976341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511013200597626090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1b6905bdefeef4cb8f1689bc3930b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initAIState: 30
+  chasingRadius: 4.2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &5106262357612303731
 PrefabInstance:
   m_ObjectHideFlags: 0
