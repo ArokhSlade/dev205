@@ -1,12 +1,14 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace DEV205.Interactables
 {
     public class ResourceView : MonoBehaviour
     {
-        [SerializeField]
-        private ResourceType resourceType;
+        [SerializeField] private ResourceType resourceType;
+        [SerializeField] private TMP_Text amountText;
+
 
         private void OnEnable()
         {
@@ -17,13 +19,13 @@ namespace DEV205.Interactables
         private void UpdateView()
         {
             uint amount = Inventory.Instance.GetResourceValue(resourceType);
-            // set value to text display
+            amountText.text = amount.ToString();
         }
-        private void UpdateView(ResourceType type, uint arg2)
+        private void UpdateView(ResourceType type, uint amount)
         {
             if (this.resourceType == type)
             {
-                // set value to text display
+                amountText.text = amount.ToString();
             }
         }
 
