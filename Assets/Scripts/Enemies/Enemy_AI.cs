@@ -32,15 +32,17 @@ namespace DEV205.Enemy
 
             switch (currentAIState)
             {
-                case AIState.None:
-                    break;
                 case AIState.Chasing:
                     break;
                 case AIState.Attacking:
                     break;
                 case AIState.Patrolling:
+                    currentState = GetComponent<PatrolState>();
+                    currentState.Enter();
                     break;
+                case AIState.None:
                 default:
+                    Debug.LogError($"Current AI State {currentAIState} not handled yet!");
                     break;
             }
         }
