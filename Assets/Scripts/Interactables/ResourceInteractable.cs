@@ -2,6 +2,9 @@
 {
     public class ResourceInteractable : Interactable
     {
-
+        protected override void Interact()
+        {
+            Destroy(gameObject);
+        }
     }
 }

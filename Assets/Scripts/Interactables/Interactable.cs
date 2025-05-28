@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DEV205.Interactables
 {
@@ -7,6 +8,11 @@ namespace DEV205.Interactables
     {
         [SerializeField] private float debugInteractionRadius = 1f;
         [SerializeField] private Color debugColor = Color.cyan;
+
+        private void Start()
+        {
+            SetInteractRadius();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -20,6 +26,11 @@ namespace DEV205.Interactables
         }
 
         private void OnValidate()
+        {
+            SetInteractRadius();
+        }
+
+        private void SetInteractRadius()
         {
             GetComponent<SphereCollider>().radius = debugInteractionRadius;
         }
